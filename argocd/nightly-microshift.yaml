@@ -15,7 +15,7 @@ spec:
   # Onboarding: no automated sync yet. Argo CD only shows the diff between
   # Git and the cluster; nothing is applied until someone syncs.
   # After review, enable it like nightly-ocp:
-  # syncPolicy:
-  #   automated:
-  #     selfHeal: true
-  #     prune: false
+    syncPolicy:
+     automated:
+       selfHeal: true
+       prune: false
