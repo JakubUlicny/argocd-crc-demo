@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: microshift-nightly-config
+data:
+  MICROSHIFT_VERSION: "4.23"
+  SCHEDULE: "0 3 * * *"
+  ENABLED: "true"

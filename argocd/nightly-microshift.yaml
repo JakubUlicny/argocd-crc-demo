@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nightly-microshift
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/JakubUlicny/argocd-crc-demo.git
+    targetRevision: master
+    path: orchestrator/openshift-local/scheduled/microshift
+  destination:
+    server: https://kubernetes.default.svc   # the cluster Argo CD runs on (CRC)
+    namespace: qe-nightly
+  # Onboarding: no automated sync yet. Argo CD only shows the diff between
+  # Git and the cluster; nothing is applied until someone syncs.
+  # After review, enable it like nightly-ocp:
+  # syncPolicy:
+  #   automated:
+  #     selfHeal: true
+  #     prune: false

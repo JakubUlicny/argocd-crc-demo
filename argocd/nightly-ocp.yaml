@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nightly-ocp
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/JakubUlicny/argocd-crc-demo.git
+    targetRevision: master
+    path: orchestrator/openshift-local/scheduled/ocp
+  destination:
+    server: https://kubernetes.default.svc   # the cluster Argo CD runs on (CRC)
+    namespace: qe-nightly
+  syncPolicy:
+    automated:
+      selfHeal: true    # revert manual changes on the cluster
+      prune: false      # do not delete resources removed from Git (yet)
