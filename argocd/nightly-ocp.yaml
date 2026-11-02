@@ -12,7 +12,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc   # the cluster Argo CD runs on (CRC)
     namespace: qe-nightly
-#  syncPolicy:
-#    automated:
-#      selfHeal: true    # revert manual changes on the cluster
-#      prune: false      # do not delete resources removed from Git (yet)
+    syncPolicy:
+    automated:
+      selfHeal: true    # revert manual changes on the cluster
+      prune: false      # do not delete resources removed from Git (yet)
