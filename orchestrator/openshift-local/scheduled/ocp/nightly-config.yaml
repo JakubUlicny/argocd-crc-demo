@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ocp-nightly-config
+data:
+  OCP_VERSION: "4.22"
+  SCHEDULE: "0 2 * * *"
+  ENABLED: "true"
